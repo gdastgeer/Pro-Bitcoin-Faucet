@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pro Bitcoin Faucet</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header, footer {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 85vh;
+    }
+
+    .left, .right {
+      flex: 1;
+      min-width: 200px;
+      background-color: #2c2c2c;
+      color: white;
+      padding: 20px;
+    }
+
+    .center {
+      flex: 2;
+      min-width: 300px;
+      background-color: white;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .center h2 {
+      margin-bottom: 20px;
+      color: #f7931a;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: #f7931a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e08200;
+    }
+
+    .nav a {
+      display: block;
+      margin: 10px 0;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Pro Bitcoin Faucet</h1>
+</header>
+
+<div class="container">
+  <!-- Left -->
+  <div class="left">
+    <h2>Bitcoin Faucet</h2>
+    <p>Claim free BTC every 10 minutes directly to your FaucetPay wallet.</p>
+  </div>
+
+  <!-- Center -->
+  <div class="center">
+    <h2>Claim Your Free BTC</h2>
+    <p>Enter your FaucetPay email address below:</p>
+    <input type="email" id="email" placeholder="you@example.com">
+    <button onclick="claim()">Claim BTC</button>
+    <p id="message"></p>
+  </div>
+
+  <!-- Right -->
+  <div class="right">
+    <h3>Navigation</h3>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Pro Bitcoin Faucet. All rights reserved.
+</footer>
+
+<script>
+  function claim() {
+    const emailInput = document.getElementById('email');
+    const message = document.getElementById('message');
+    const email = emailInput.value.trim();
+
+    if (!email || !validateEmail(email)) {
+      message.style.color = 'red';
+      message.textContent = 'Please enter a valid FaucetPay email address.';
+      return;
+    }
+
+    // Success message
+    message.style.color = 'green';
+    message.textContent = `BTC Claimed for ${email}! Check your FaucetPay wallet.`;
+
+    // Simulate backend logic here
+    // sendToServer(email);
+  }
+
+  function validateEmail(email) {
+    // Simple email validation regex
+    const re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    return re.test(email);
+  }
+</script>
+
+</body>
+</html>
